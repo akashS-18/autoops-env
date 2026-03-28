@@ -1,0 +1,16 @@
+name: autoops-env
+version: 0.1.0
+description: OpenEnv environment for autonomous DevOps incident response
+entrypoint: autoops_env.server.app:app
+port: 7860
+
+tags:
+  - devops
+  - incident-response
+  - simulation
+  - multi-service
+
+tasks:
+  - easy_api_crash
+  - medium_cache_latency
+  - hard_cascading_incident

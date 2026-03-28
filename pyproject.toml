@@ -1,0 +1,18 @@
+[project]
+name = "autoops-env"
+version = "0.1.0"
+description = "OpenEnv environment for autonomous DevOps incident response"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.109.0",
+    "uvicorn[standard]>=0.27.0",
+    "pydantic>=2.5.0",
+    "httpx>=0.26.0",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["autoops_env*"]
