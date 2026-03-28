@@ -1,5 +1,5 @@
 ---
-title: Autoops Env
+title: AutoOps Env
 emoji: 🚀
 colorFrom: blue
 colorTo: green
@@ -8,12 +8,27 @@ app_port: 7860
 pinned: false
 ---
 
-
 # AutoOps AI
 
 > **OpenEnv Environment · Autonomous DevOps Incident Response**
 
+## Live Demo
+
+- Health: https://akash9363-autoops-env.hf.space/health  
+- Tasks: https://akash9363-autoops-env.hf.space/tasks  
+- Baseline: https://akash9363-autoops-env.hf.space/baseline  
+
+### Quick Test
+
+```bash
+curl -X POST https://akash9363-autoops-env.hf.space/reset \
+     -H "Content-Type: application/json" \
+     -d '{"task_id":"easy_api_crash"}'  
+```
+
 An AI agent acts as an on-call SRE — it inspects production signals, chooses remediation actions, and safely restores service across three escalating incident scenarios. State changes after every action; the agent must reason about cause and effect, not just classify a snapshot.
+
+> Baseline achieves perfect 1.000 across all tasks — demonstrating optimal policy execution.
 
 ---
 
@@ -313,7 +328,7 @@ cd autoops-env
 
 pip install -r requirements.txt
 
-uvicorn server.app:app --host 0.0.0.0 --port 8000 --reload
+uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
 ```
 
 ---
