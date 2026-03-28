@@ -17,7 +17,7 @@ Optimal path (5-7 steps):
   7. wait                       → all healthy, resolved (+1.00)
 """
 
-from autoops_env.models import AutoOpsState, ServiceState
+from models import AutoOpsState, ServiceState
 
 
 def get_hard_state() -> AutoOpsState:

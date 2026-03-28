@@ -28,13 +28,13 @@ import copy
 import random
 from typing import Optional
 
-from autoops_env.models import (
+from models import (
     AutoOpsAction,
     AutoOpsObservation,
     AutoOpsState,
     ServiceState,
 )
-from autoops_env.tasks import TASK_REGISTRY
+from tasks import TASK_REGISTRY
 
 # ---------------------------------------------------------------------------
 # Constants

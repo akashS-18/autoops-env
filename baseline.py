@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, List
 
-from autoops_env.models import AutoOpsAction, AutoOpsObservation
-from autoops_env.graders.grader import grade_episode
+from models import AutoOpsAction, AutoOpsObservation
+from graders.grader import grade_episode
 
 
 def _act(env, action_type: str, target: str | None = None) -> AutoOpsObservation:
@@ -111,7 +111,7 @@ def run_baseline_all(env=None) -> List[Dict[str, Any]]:
     Returns list of grader results.
     """
     if env is None:
-        from autoops_env.server.environment import DevOpsEnvironment
+        from server.environment import DevOpsEnvironment
         env = DevOpsEnvironment()
 
     results = []
@@ -131,7 +131,7 @@ def run_baseline_all(env=None) -> List[Dict[str, Any]]:
 # ---------------------------------------------------------------------------
 
 if __name__ == "__main__":
-    from autoops_env.server.environment import DevOpsEnvironment
+    from server.environment import DevOpsEnvironment
 
     env = DevOpsEnvironment()
     results = run_baseline_all(env)

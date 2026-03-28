@@ -5,7 +5,7 @@ Mirrors the OpenEnv guide pattern for a clean, professional client.
 Works against both local and deployed endpoints.
 
 Usage:
-    from autoops_env.client import AutoOpsClient
+    from client import AutoOpsClient
 
     client = AutoOpsClient("http://localhost:8000")
     obs = client.reset("easy_api_crash")
@@ -19,7 +19,7 @@ from typing import Any, Dict, List, Optional
 
 import httpx
 
-from autoops_env.models import AutoOpsAction, AutoOpsObservation
+from models import AutoOpsAction, AutoOpsObservation
 
 
 class AutoOpsClient:

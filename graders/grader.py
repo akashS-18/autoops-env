@@ -33,7 +33,7 @@ from __future__ import annotations
 
 from typing import Any, Dict
 
-from autoops_env.models import AutoOpsState
+from models import AutoOpsState
 
 # ---------------------------------------------------------------------------
 # Per-task configuration

@@ -14,7 +14,7 @@ Optimal path (4 steps):
   4. wait                  → api latency drops, resolved (+1.00 + speed)
 """
 
-from autoops_env.models import AutoOpsState, ServiceState
+from models import AutoOpsState, ServiceState
 
 
 def get_medium_state() -> AutoOpsState:

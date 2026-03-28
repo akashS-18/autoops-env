@@ -12,7 +12,7 @@ Optimal path (4 steps):
   4. incident_resolved → +1.00 + speed bonus
 """
 
-from autoops_env.models import AutoOpsState, ServiceState
+from models import AutoOpsState, ServiceState
 
 
 def get_easy_state() -> AutoOpsState:

@@ -15,10 +15,10 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-from autoops_env.models import AutoOpsAction, AutoOpsObservation
-from autoops_env.server.environment import DevOpsEnvironment
-from autoops_env.graders.grader import grade_episode
-from autoops_env.tasks import TASK_REGISTRY
+from models import AutoOpsAction, AutoOpsObservation
+from server.environment import DevOpsEnvironment
+from graders.grader import grade_episode
+from tasks import TASK_REGISTRY
 
 # ---------------------------------------------------------------------------
 # App
@@ -167,6 +167,6 @@ def grader(episode_id: str = Query(..., description="Episode ID to grade")):
 @app.get("/baseline")
 def run_baseline():
     """Run the deterministic baseline agent on all 3 tasks and return scores."""
-    from autoops_env.baseline import run_baseline_all
+    from baseline import run_baseline_all
     results = run_baseline_all(env)
     return {"baseline_results": results}
