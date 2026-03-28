@@ -290,7 +290,7 @@ The deterministic baseline uses hard-coded if/then logic — the **provably opti
 4. It never makes a wrong action (zero safety violations)
 
 ```bash
-python -m autoops_env.baseline
+python baseline.py
 ```
 
 Expected output:
@@ -308,14 +308,12 @@ Expected output:
 ## Setup
 
 ```bash
-git clone <your-repo>
-cd AutoOps
+git clone https://huggingface.co/spaces/akash9363/autoops-env
+cd autoops-env
 
-# Install (editable)
-pip install -e autoops_env/
+pip install -r requirements.txt
 
-# Run server
-uvicorn autoops_env.server.app:app --host 0.0.0.0 --port 8000 --reload
+uvicorn server.app:app --host 0.0.0.0 --port 8000 --reload
 ```
 
 ---
@@ -361,20 +359,15 @@ docker run -p 7860:7860 autoops-env
 ## HuggingFace Spaces Deployment
 
 ```bash
-# 1. Create a Docker Space at https://huggingface.co/spaces
-# 2. Clone your Space repo
-git clone https://huggingface.co/spaces/yourusername/autoops-env
+git clone https://huggingface.co/spaces/akash9363/autoops-env
 cd autoops-env
 
-# 3. Copy project files
-cp -r /path/to/AutoOps/* .
+git add .
+git commit -m "deploy autoops-env"
+git push
 
-# 4. Push
-git add . && git commit -m "deploy autoops-env" && git push
-
-# 5. Test live endpoints
-curl https://yourusername-autoops-env.hf.space/health
-curl https://yourusername-autoops-env.hf.space/baseline
+curl https://akash9363-autoops-env.hf.space/health
+curl https://akash9363-autoops-env.hf.space/baseline
 ```
 
 ---
@@ -382,7 +375,7 @@ curl https://yourusername-autoops-env.hf.space/baseline
 ## Typed Python Client
 
 ```python
-from autoops_env.client import AutoOpsClient
+from client import AutoOpsClient
 
 with AutoOpsClient("http://localhost:8000") as client:
     obs = client.reset("hard_cascading_incident")
