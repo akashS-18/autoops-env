@@ -11,7 +11,7 @@ from __future__ import annotations
 import copy
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
@@ -79,7 +79,7 @@ def health():
 
 
 @app.post("/reset", response_model=AutoOpsObservation)
-def reset(req: Optional[ResetRequest] = None):
+def reset(req: Optional[ResetRequest] = Body(default=None)):
     """Start a new episode for the given task_id."""
     task_id = req.task_id if req and req.task_id else "easy_api_crash"
     try:
@@ -178,3 +178,13 @@ def run_baseline():
     from baseline import run_baseline_all
     results = run_baseline_all(env)
     return {"baseline_results": results}
+
+
+def main():
+    """Entry point for the server script."""
+    import uvicorn
+    uvicorn.run("server.app:app", host="0.0.0.0", port=8000)
+
+
+if __name__ == "__main__":
+    main()

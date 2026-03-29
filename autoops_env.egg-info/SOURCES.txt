@@ -1,0 +1,8 @@
+README.md
+pyproject.toml
+autoops_env.egg-info/PKG-INFO
+autoops_env.egg-info/SOURCES.txt
+autoops_env.egg-info/dependency_links.txt
+autoops_env.egg-info/entry_points.txt
+autoops_env.egg-info/requires.txt
+autoops_env.egg-info/top_level.txt
