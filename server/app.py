@@ -13,6 +13,7 @@ from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import RedirectResponse
 from pydantic import BaseModel
 
 from models import AutoOpsAction, AutoOpsObservation
@@ -64,6 +65,12 @@ class TaskInfo(BaseModel):
 # ---------------------------------------------------------------------------
 # Standard endpoints
 # ---------------------------------------------------------------------------
+
+@app.get("/", include_in_schema=False)
+def root():
+    """Redirect to API documentation."""
+    return RedirectResponse(url="/docs")
+
 
 @app.get("/health")
 def health():
