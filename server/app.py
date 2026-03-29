@@ -51,7 +51,7 @@ env = DevOpsEnvironment()
 # ---------------------------------------------------------------------------
 
 class ResetRequest(BaseModel):
-    task_id: str = "easy_api_crash"
+    task_id: Optional[str] = None
 
 
 class TaskInfo(BaseModel):
@@ -81,10 +81,9 @@ def health():
 @app.post("/reset", response_model=AutoOpsObservation)
 def reset(req: Optional[ResetRequest] = None):
     """Start a new episode for the given task_id."""
-    if req is None:
-        req = ResetRequest()
+    task_id = req.task_id if req and req.task_id else "easy_api_crash"
     try:
-        obs = env.reset(req.task_id)
+        obs = env.reset(task_id)
     except ValueError as exc:
         raise HTTPException(status_code=400, detail=str(exc))
     return obs
