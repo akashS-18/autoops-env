@@ -3,6 +3,9 @@ FROM python:3.11-slim
 # HuggingFace Spaces requires port 7860
 WORKDIR /app
 
+# Cache-bust: force full rebuild so new code is always picked up
+LABEL build_version="2026-03-29-v4"
+
 # Copy all project files
 COPY requirements.txt .
 COPY pyproject.toml .
