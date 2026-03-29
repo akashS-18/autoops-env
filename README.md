@@ -2,10 +2,9 @@
 title: AutoOps Env
 emoji: 🚀
 colorFrom: blue
-colorTo: green
+colorTo: indigo
 sdk: docker
 app_port: 7860
-pinned: false
 ---
 
 # AutoOps AI
@@ -14,7 +13,6 @@ pinned: false
 
 ## Live Demo
 
-- **API Docs (Swagger UI)**: https://akash9363-autoops-env.hf.space/ (or `/docs`)
 - Health: https://akash9363-autoops-env.hf.space/health  
 - Tasks: https://akash9363-autoops-env.hf.space/tasks  
 - Baseline: https://akash9363-autoops-env.hf.space/baseline  
@@ -338,7 +336,6 @@ uvicorn server.app:app --host 0.0.0.0 --port 7860 --reload
 
 | Method | Path | Description |
 |---|---|---|
-| `GET` | `/` | Redirects to `/docs` (Interactive API Documentation) |
 | `GET` | `/health` | Liveness probe → `{"status": "ok"}` |
 | `POST` | `/reset` | Start new episode → `AutoOpsObservation` |
 | `POST` | `/step` | Submit action → `AutoOpsObservation` |
