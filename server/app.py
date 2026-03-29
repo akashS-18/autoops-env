@@ -79,8 +79,10 @@ def health():
 
 
 @app.post("/reset", response_model=AutoOpsObservation)
-def reset(req: ResetRequest):
+def reset(req: Optional[ResetRequest] = None):
     """Start a new episode for the given task_id."""
+    if req is None:
+        req = ResetRequest()
     try:
         obs = env.reset(req.task_id)
     except ValueError as exc:

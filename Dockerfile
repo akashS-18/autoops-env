@@ -8,6 +8,7 @@ COPY requirements.txt .
 COPY pyproject.toml .
 COPY models.py .
 COPY baseline.py .
+COPY inference.py .
 COPY client.py .
 COPY server/ ./server/
 COPY graders/ ./graders/
