@@ -13,7 +13,7 @@ from typing import Optional
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 from models import AutoOpsAction, AutoOpsObservation
@@ -68,8 +68,39 @@ class TaskInfo(BaseModel):
 
 @app.get("/", include_in_schema=False)
 def root():
-    """Redirect to API documentation."""
-    return RedirectResponse(url="/docs")
+    """Welcome endpoint."""
+    html_content = """
+    <html>
+        <head>
+            <title>AutoOps AI Environment</title>
+            <style>
+                body { font-family: sans-serif; text-align: center; margin-top: 50px; background-color: #0b0f19; color: #e2e8f0; }
+                .container { max-width: 600px; margin: auto; padding: 30px; background: #1e293b; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.5); }
+                h1 { color: #f8fafc; margin-bottom: 10px; }
+                p { color: #94a3b8; font-size: 1.1em; line-height: 1.5; margin-bottom: 25px; }
+                a { display: inline-block; padding: 12px 24px; background: #3b82f6; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; transition: background 0.2s; }
+                a:hover { background: #2563eb; }
+                .endpoints { margin-top: 30px; text-align: left; padding: 15px; background: #0f172a; border-radius: 8px; border: 1px solid #334155; }
+                .endpoints pre { font-family: monospace; color: #10b981; margin: 5px 0; font-size: 0.9em; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <h1>🚀 AutoOps AI Environment</h1>
+                <p>The OpenEnv autonomous DevOps incident response simulator is running successfully.</p>
+                <a href="/docs">Open API Documentation (Swagger UI)</a>
+                
+                <div class="endpoints">
+                    <pre>GET  /health     - Liveness probe</pre>
+                    <pre>POST /reset      - Start an episode</pre>
+                    <pre>POST /step       - Submit an action</pre>
+                    <pre>GET  /tasks      - List active tasks</pre>
+                </div>
+            </div>
+        </body>
+    </html>
+    """
+    return HTMLResponse(content=html_content)
 
 
 @app.get("/health")
