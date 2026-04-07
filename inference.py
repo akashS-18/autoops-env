@@ -12,8 +12,15 @@ Prints structured output to stdout in the OpenEnv-required format:
 
 from __future__ import annotations
 
+import os
 import sys
 from typing import Any, Dict, List
+from openai import OpenAI
+
+# Required Environment Variables for Dashboard Submission Checklist
+API_BASE_URL = os.getenv("API_BASE_URL", "<your-active-endpoint>")
+MODEL_NAME = os.getenv("MODEL_NAME", "<your-active-model>")
+HF_TOKEN = os.getenv("HF_TOKEN")
 
 from models import AutoOpsAction, AutoOpsObservation
 from graders.grader import grade_episode
