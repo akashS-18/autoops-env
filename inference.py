@@ -12,7 +12,6 @@ from __future__ import annotations
 import os
 import sys
 from typing import Any, Dict
-from openai import OpenAI
 
 # Required Environment Variables for Dashboard Submission Checklist
 API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
