@@ -31,11 +31,11 @@ def _log_start(task_id: str) -> None:
 
 
 def _log_step(step: int, reward: float) -> None:
-    print(f"[STEP] step={step} reward={round(reward, 4)}", flush=True)
+    print(f"[STEP]  step={step} reward={round(reward, 4)}", flush=True)
 
 
 def _log_end(task_id: str, score: float, steps: int) -> None:
-    print(f"[END] task={task_id} score={round(score, 4)} steps={steps}", flush=True)
+    print(f"[END]   task={task_id} score={round(score, 4)} steps={steps}", flush=True)
 
 
 # ---------------------------------------------------------------------------

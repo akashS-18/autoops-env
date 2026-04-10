@@ -327,11 +327,6 @@ class DevOpsEnvironment:
 
         # ── Easy: api crash loop — restart IS the right fix ──────────────
         if s.task_id == "easy_api_crash" and target == "api":
-            # 10% stochastic failure: OOM persists despite restart
-            if random.random() < 0.10:
-                s.safety_violations += 1
-                s.last_inspection_result = "restart_service(api) — FAILED: container still OOMing"
-                return -0.20
             svc.health = "recovering"
             svc.status = "restarting"
             svc.error_rate = 5.0
